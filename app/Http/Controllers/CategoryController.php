@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
@@ -32,12 +31,11 @@ class CategoryController extends Controller
         $message = [
             'name.required' => Lang::get('web.name-required'),
             'file.required' => Lang::get('web.file-required'),
-            'file-mimes' => Lang::get('web.file-mimes'),
+            'file' => Lang::get('web.file-mimes'),
         ];
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:categories',
             'file' => 'required|image|mimes:jpeg,jpg,png|max:2000',
-            'file-mimes' => 'required|image|mimes:jpeg,jpg,png|max:2000',
         ], $message);
 
         if ($validator->fails()) {
@@ -49,8 +47,8 @@ class CategoryController extends Controller
         $image->storeAs('/public/categories/', $image->hashName());
 
         $data = Category::create([
-            'name' => $request->name,
             'image' => $image->hashName(),
+            'name' => $request->name,
             'slug' => Str::slug($request->name, '-'),
         ]);
 

@@ -12,8 +12,9 @@
                 <div class="card-body">
                     <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
                         @if($errors->first('message'))
-                        <div class="col-12">
+                        <div class=" col-12">
                             <div class="border-left-primary shadow-2">
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('message') }}
@@ -21,6 +22,7 @@
                             </div>
                         </div>
                         @endif
+
                         <div class="form-group">
                             <label>GAMBAR</label>
                             <input type="file" name="file" class="form-control">
@@ -34,7 +36,8 @@
                         <button class="btn btn-primary mr-1 btn-submit" type="submit"><i class="fa fa-paper-plane"></i>
                             @lang('web.submit')</button>
                         <button class="btn btn-warning btn-reset" type="reset"><i
-                                class="fa fa-redo"></i>@lang('web.reset') </button>
+                                class="fa fa-redo"></i>@lang('web.reset')
+                        </button>
                     </form>
                 </div>
             </div>
