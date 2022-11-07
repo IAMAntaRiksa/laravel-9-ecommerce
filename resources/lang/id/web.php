@@ -7,6 +7,8 @@ return [
 
     //Param
     'username' => 'Username',
+    'email' => 'Name email sudah digunakan',
+    'email-required' => 'Email harus diisi',
     'enter-username' => 'Masukkan username',
     'username-required' => 'Username harus diisi',
     'username-unique' => 'Username sudah digunakan',
@@ -20,14 +22,18 @@ return [
     'enter-confirm-password' => 'Masukkan konfirmasi password',
     'confirm-password-required' => 'Konfirmasi password harus diisi',
     'confirm-password-same' => 'Password tidak sama',
-    'name' => 'Nama',
+    'name' => 'Name sudah digunakan',
     'enter-name' => 'Masukkan nama',
     'name-required' => 'Nama harus diisi',
-    'file' => 'File',
     'select-item' => 'Pilih item',
     'file-required' => 'File harus diisi',
     'file-file' => 'File harus file',
     'file-mimes' => 'File tidak sesuai',
+    'content-required' => 'Deskripsi harus diisi',
+    'weight-required' => 'Berat harus diisi',
+    'price-required' => 'Harga harus diisi',
+    'discount-required' => 'Promo harus diisi',
+    'title-required' => 'Nama product harus diisi',
 
     //Info
     'reset' => 'Riset',
@@ -37,6 +43,7 @@ return [
     'delete' => 'Hapus',
     'edit' => 'Edit',
     'add' => 'Tambah',
+    'search' => 'Cari',
     'create-failed' => 'Gagal membuat data baru',
     'create-failed-duplicate-entry' => 'Data sudah ada',
     'update-failed' => 'Gagal mengedit data baru',

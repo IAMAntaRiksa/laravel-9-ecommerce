@@ -26,18 +26,18 @@
                         @endif
 
                         <div class="form-group">
-                            <label>GAMBAR</label>
+                            <label>GAMBAR <span style="color : red"> *</label>
                             <input type="file" name="file" class="form-control">
                             <small class="form-text text-danger">{{ $errors->first('file') }}</small>
                         </div>
                         <div class="form-group">
-                            <label>NAMA KATEGORI</label>
+                            <label>NAMA KATEGORI <span style="color : red"> *</label>
                             <input type="text" name="name" value="{{ old('name', $category->name) }}"
                                 placeholder="Masukkan Nama Kategori" class="form-control">
                             <small class="form-text text-danger">{{ $errors->first('name') }}</small>
                         </div>
                         <button class="btn btn-primary mr-1 btn-submit" type="submit"><i class="fa fa-paper-plane"></i>
-                            @lang('web.update')</button>
+                            @lang('web.submit')</button>
                         <button class="btn btn-warning btn-reset" type="reset"><i class="fa fa-redo"></i>
                             @lang('web.reset')</button>
                     </form>

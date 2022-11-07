@@ -15,10 +15,10 @@ class Category extends Model
         'image'
     ];
 
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
+    // public function products()
+    // {
+    //     return $this->hasMany(Product::class);
+    // }
 
     protected function image(): Attribute
     {

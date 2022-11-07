@@ -30,6 +30,7 @@ class CategoryController extends Controller
     {
         $message = [
             'name.required' => Lang::get('web.name-required'),
+            'name' => Lang::get('web.name'),
             'file.required' => Lang::get('web.file-required'),
             'file' => Lang::get('web.file-mimes'),
         ];
@@ -71,6 +72,8 @@ class CategoryController extends Controller
     {
         $message = [
             'name.required' => Lang::get('web.name-required'),
+            'name' => Lang::get('web.name'),
+            'file' => Lang::get('web.file-mimes'),
         ];
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:categories,name,' . $category->id,

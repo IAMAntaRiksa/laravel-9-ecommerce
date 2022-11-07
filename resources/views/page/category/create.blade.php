@@ -24,12 +24,12 @@
                         @endif
 
                         <div class="form-group">
-                            <label>GAMBAR</label>
+                            <label>GAMBAR <span style="color : red"> *</span></label>
                             <input type="file" name="file" class="form-control">
                             <small class="form-text text-danger">{{ $errors->first('file') }}</small>
                         </div>
                         <div class="form-group">
-                            <label>NAMA KATEGORI</label>
+                            <label>NAMA KATEGORI <span style="color : red"> *</label>
                             <input type="text" name="name" placeholder="Masukkan Nama Kategori" class="form-control">
                             <small class="form-text text-danger">{{ $errors->first('name') }}</small>
                         </div>

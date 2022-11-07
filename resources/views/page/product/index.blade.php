@@ -1,5 +1,4 @@
-@extends('layouts.app', ['title' => 'Kategori'])
-
+@extends('layouts.app', ['title' => 'Produk'])
 @section('content')
 
 @if($errors->first('message'))
@@ -23,19 +22,19 @@
         <div class="col-md-12">
             <div class="card border-0 shadow">
                 <div class="card-header">
-                    <h6 class="m-0 font-weight-bold"><i class="fas fa-folder"></i> KATEGORI</h6>
+                    <h6 class="m-0 font-weight-bold"><i class="fa fa-shopping-bag"></i> PRODUK</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('category.index') }}" method="GET">
+                    <form action="{{ route('product.index') }}" method="GET">
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <a href="{{ route('category.create') }}" class="btn btn-primary btn-sm"
+                                    <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm"
                                         style="padding-top: 10px;"><i class="fa fa-plus-circle"></i>
                                         @lang('web.add')</a>
                                 </div>
                                 <input type="text" class="form-control" name="q"
-                                    placeholder="Silakan lakukan apa saja?">
+                                    placeholder="cari berdasarkan nama produk">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>
                                         @lang('web.search')
@@ -48,30 +47,33 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col" style="text-align: center;width: 6%">NO.</th>
-                                    <th scope="col">GAMBAR</th>
-                                    <th scope="col">NAMA KATEGORI</th>
-                                    <th scope="col" style="width: 15%;text-align: center">AKSI</th>
+                                    <th scope="col" style="text-align:center;width: 6%">NO.</th>
+                                    <th scope="col">Image </th>
+                                    <th scope="col">NAMA PRODUK</th>
+                                    <th scope="col">KATEGORI</th>
+                                    <th scope="col">Price </th>
+                                    <th scope="col" style="width:15%;text-align: center">AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($datas as $no => $category)
+                                @forelse ($datas as $no => $product)
                                 <tr>
-                                    <th scope="row" style="text-align: center">
+                                    <th scope="row" style="text-align:center">
                                         {{ ++$no + ($datas->currentPage()-1) * $datas->perPage() }}
                                     </th>
-                                    <td class="text-center">
-                                        <img src="{{ $category->image }}" style="width:50px">
+                                    <td>
+                                        <img src="{{ $product->image }}" alt="prodoct" height="50" , width="50">
                                     </td>
-                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $product->title }}</td>
+                                    <td>{{ $product->category->name }}</td>
+                                    <td>{{ $product->price }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('category.edit', $category->id) }}"
+                                        <a href="{{ route('product.edit', $product->id) }}"
                                             class="btn btn-sm btn-primary">
                                             <i class="fa fa-pencil-alt"></i>
                                         </a>
-
                                         <button onClick="Delete(this.id)" class="btn btn-sm btn-danger"
-                                            id="{{ $category->id }}">
+                                            id="{{ $product->id }}">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
@@ -80,22 +82,19 @@
                                 <div class="alert alert-danger">
                                     Data Belum Tersedia!
                                 </div>
-
                                 @endforelse
                             </tbody>
                         </table>
                         <div style="text-align: center">
-                            {{ $datas->links("vendor.pagination.bootstrap-5") }}
+                            {{$datas->links("vendor.pagination.bootstrap-5")}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 <!-- /.container-fluid -->
-
 <script>
 //ajax delete
 function Delete(id) {
@@ -114,7 +113,7 @@ function Delete(id) {
         if (isConfirm) {
             //ajax delete
             jQuery.ajax({
-                url: "/category/" + id,
+                url: "/product/" + id,
                 data: {
                     "id": id,
                     "_token": token
@@ -148,7 +147,6 @@ function Delete(id) {
                     }
                 }
             });
-
         } else {
             return true;
         }

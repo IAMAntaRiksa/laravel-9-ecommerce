@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('assets/img/shop-2.png') }}" type="image/x-icon">
-    <title>{{ $title ?? config('app.name') }} - Admin Online Shop</title>
+    <title>{{ $title ?? config('app.name') }} - Ecommerce</title>
     <!-- Custom fonts for this template-->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
@@ -60,7 +60,7 @@
                 <div class="sidebar-brand-icon">
                     <i class="fab fa-apple"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">APPLE STORE</div>
+                <div class="sidebar-brand-text mx-3">Ecommerce</div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -71,7 +71,7 @@
                     <span>DASHBOARD</span></a>
             </li>
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider my-12">
             <!-- Heading -->
             <div class="sidebar-heading">
                 PRODUK
@@ -91,7 +91,8 @@
                         <h6 class="collapse-header">KATEGORI & PRODUK</h6>
                         <a class="collapse-item {{ Request::is('category*') ? ' active' : '' }}"
                             href="{{ route('category.index')  }}">KATEGORI</a>
-                        <a class="collapse-item {{ Request::is('product*') ? ' active' : '' }}" href="#">PRODUK</a>
+                        <a class="collapse-item {{ Request::is('product*') ? ' active' : '' }}"
+                            href="{{ route('product.index') }}">PRODUK</a>
                     </div>
                 </div>
             </li>
@@ -119,7 +120,7 @@
                     <span>PROFILE</span></a>
             </li>
             <li class="nav-item {{ Request::is('user*') ? ' active' : '' }}">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('user.index') }}">
                     <i class="fas fa-users"></i>
                     <span>USERS</span></a>
             </li>
@@ -155,11 +156,13 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    LOGOUT
-                                </a>
 
+                                <a class="dropdown-item" href="{{ route('logout') }}" style="cursor: pointer"
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400 "></i>Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                </form>
                             </div>
                         </li>
                     </ul>
@@ -174,8 +177,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Hak Cipta Dilindungi &copy; 2020 Online Shop -
-                            SantriKoding.com </span>
+                        <span>Hak Cipta Dilindungi &copy; 2022 Laravel | IAMAntaRiksa </span>
                     </div>
                 </div>
             </footer>
@@ -185,36 +187,7 @@
     </div>
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Apakah Yakin
-                        Ingin Keluar ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria- 100label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Silahkan pilih "Logout" di bawah untuk
-                    mengakhiri sesi saat ini.</div>
-                <div class="modal-footer">
-                    <button class=" btn btn-secondary" type="button" data- dismiss="modal">Cancel
-                    </button>
 
-                    <a class="btn btn-primary" href="{{ route('logout') }}" style="cursor: pointer"
-                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
