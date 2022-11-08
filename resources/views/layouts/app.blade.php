@@ -100,17 +100,17 @@
                 ORDERS
             </div>
             <li class="nav-item {{ Request::is('order*') ? ' active' : '' }}">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('order.index')}}">
                     <i class="fas fa-shopping-cart"></i>
                     <span>ORDERS</span></a>
             </li>
             <li class="nav-item {{ Request::is('customer*') ? ' active' : '' }}">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('customer.index')}}">
                     <i class="fas fa-users"></i>
                     <span>CUSTOMERS</span></a>
             </li>
             <li class="nav-item {{ Request::is('slider*') ? ' active' : '' }}">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('slider.index')}}">
                     <i class="fas fa-laptop"></i>
                     <span>SLIDERS</span></a>
             </li>

@@ -10,7 +10,7 @@
                     <h6 class="m-0 font-weight-bold"><i class="fas fa-user-circle"></i> TAMBAH USER</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('user.update', $user) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method("PUT")
                         @if($errors->first('message'))

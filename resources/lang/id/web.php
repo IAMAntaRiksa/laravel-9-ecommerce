@@ -28,6 +28,7 @@ return [
     'select-item' => 'Pilih item',
     'file-required' => 'File harus diisi',
     'file-file' => 'File harus file',
+    'link-required' => 'Link harus diisi',
     'file-mimes' => 'File tidak sesuai',
     'content-required' => 'Deskripsi harus diisi',
     'weight-required' => 'Berat harus diisi',

@@ -23,7 +23,6 @@ return new class extends Migration
             $table->integer('weight');
             $table->string('name');
             $table->bigInteger('phone');
-            $table->integer('province');
             $table->unsignedBigInteger('province_id');
             $table->unsignedBigInteger('city_id');
             $table->text('address');
