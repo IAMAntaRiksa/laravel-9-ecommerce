@@ -54,12 +54,11 @@ class SliderController extends Controller
         return redirect()->route('slider.index');
     }
 
-    public function destroy($id)
+    public function destroy(Slider $slider)
     {
-        $slider = Slider::findOrFail($id);
+        Storage::disk('local')->delete('/public/sliders/' . basename($slider->image));
+        $slider->delete();
         if ($slider) {
-            Storage::disk('local')->delete('/public/sliders/' . basename($slider->image));
-            $slider->delete();
             return response()->json([
                 'status' => 'success'
             ]);

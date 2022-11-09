@@ -113,13 +113,12 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::findOrFail($id);
+        Storage::disk('local')->delete('/public/categories/' . basename($category->image));
+        $category->delete();
 
         if ($category) {
-            Storage::disk('local')->delete('/public/categories/' . basename($category->image));
-            $category->delete();
             return response()->json([
                 'status' => 'success'
             ]);

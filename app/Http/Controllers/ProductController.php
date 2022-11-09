@@ -192,11 +192,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
+
     {
-        $product = Product::findOrFail($id);
         Storage::disk('local')->delete('public/products/' . basename($product->image));
         $product->delete();
+
         if ($product) {
             return response()->json([
                 'status' => 'success'

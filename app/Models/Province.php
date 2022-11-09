@@ -9,13 +9,7 @@ class Province extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'image',
-        'title',
-        'slug',
-        'category_id',
-        'content',
-        'weight',
-        'price',
-        'discount'
+        'province_id',
+        'name'
     ];
 }

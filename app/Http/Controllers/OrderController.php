@@ -13,12 +13,12 @@ class OrderController extends Controller
             $invoices = $invoices->where('invoice', 'like', '%' . request()->q . '%');
         })->orderBy('id', 'DESC')->latest()->paginate(5);
 
-        dd($datas);
         return view('page.order.index', compact('datas'));
     }
 
-    public function show(Invoice $invoice)
+    public function show(Invoice $order)
     {
-        return view('page.ordes.show', compact('invoice'));
+
+        return view('page.order.show', compact('order'));
     }
 }
