@@ -14,4 +14,14 @@ class ProductController extends Controller
         $products = Product::with('category')->latest()->paginate(5);
         return ProductResource::collection($products);
     }
+
+    public function show($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        if ($product) {
+            return new ProductResource($product);
+        } else {
+            return response()->json(['message' => 'Not Found'], 404);
+        }
+    }
 }

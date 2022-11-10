@@ -2,7 +2,7 @@
 
 return [
     'login-failed' => 'Gagal melakukan login',
-    'login-username.required' => 'Harap mengisi username',
+    'login-username.required' => 'Harap mengisi username/email',
     'login-password.required' => 'Harap mengisi password',
 
     //Param
