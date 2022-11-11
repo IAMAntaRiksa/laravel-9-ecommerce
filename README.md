@@ -1,10 +1,10 @@
-- Aplikasi ini di buat hasil experience saya dibuat dri nol
+- Aplikasi Ecommerce ini adalah hasil experiment saya 
 
-- Fitur Api
+- Membuat Rest API
   - Membuat Login client
   - Membuat get Category
   - Membuat get Product
-  - Membuat menghitung ongkoskirim menggunakan rajaongkir
+  - Membuat menghitung ongkos kirim menggunakan rajaongkir
   - Menambahkan product ke Cart
   - Menampilkan List orderan customer
   - Melakukan checkOut pakai middtrans
