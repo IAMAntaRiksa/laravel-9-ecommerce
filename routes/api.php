@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\RajaOngkirController;
 use App\Http\Controllers\Api\SliderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('/user', [AuthController::class, 'getUser'])->name('auth.getUser');
-
     Route::post('/logout', [AuthController::class, 'logout'])->name('atuh.logout');
 
     Route::get('/order', [OrderController::class, 'index'])->name('oder.index');
@@ -37,6 +37,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/cart/total', [CartController::class, 'getCartTotal'])->name('cart.getCartTotal');
     Route::get('/cart/totalWeight', [CartController::class, 'getCartTotalWeight'])->name('cart.getCartTotalWeight');
     Route::post('/cart/remove', [CartController::class, 'removeCart'])->name('cart.removeCart');
+
+    Route::get('/rajaongkir/provinces', [RajaOngkirController::class, 'getProvinces'])->name('rajaongkir.getProvinces');
+    Route::get('/rajaongkir/cities', [RajaOngkirController::class, 'getCities'])->name('rajaongkir.getCities');
+    Route::post('/rajaongkir/checkOngkir', [RajaOngkirController::class, 'checkOngkir'])->name('rajaongkir.checkOngkir');
 });
 
 
@@ -47,5 +51,6 @@ Route::prefix('v1')->group(function () {
 
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/products/{slug}', [ProductController::class, 'show']);
+
     Route::get('/sliders', [SliderController::class, 'index']);
 });
