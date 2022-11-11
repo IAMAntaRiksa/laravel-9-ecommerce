@@ -23,7 +23,7 @@ class ProductResource extends JsonResource
             "content" => $this->content,
             "weight" => $this->weight,
             "price" => $this->price,
-            "discount" => $this->discount,
+            "discount" => $this->discount ?? 0
         ];
     }
 }
