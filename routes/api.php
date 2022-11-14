@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CheckOutController;
+use App\Http\Controllers\Api\NotificationHandlerController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RajaOngkirController;
@@ -41,6 +43,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/rajaongkir/provinces', [RajaOngkirController::class, 'getProvinces'])->name('rajaongkir.getProvinces');
     Route::get('/rajaongkir/cities', [RajaOngkirController::class, 'getCities'])->name('rajaongkir.getCities');
     Route::post('/rajaongkir/checkOngkir', [RajaOngkirController::class, 'checkOngkir'])->name('rajaongkir.checkOngkir');
+
+    Route::post('/checkout', [CheckOutController::class, 'store'])->name('checkOut.store');
+
+    Route::post('/notificationHandler', [NotificationHandlerController::class, 'notificationHandler']);
 });
 
 
